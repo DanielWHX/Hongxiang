@@ -201,7 +201,7 @@ will likely refine your design to make your implementation easier to use.
     - `int numberOfCards()`
   - **Secondary Methods**:
     - `TCGCard getMostValuableCard()`
-    -
+    - `www`
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
