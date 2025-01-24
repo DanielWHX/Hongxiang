@@ -102,7 +102,7 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-Hi, my name is HongxiangWang.
+Hi, my name is HongxiangWang, My mbti is ENTP. I like to try new and interesting things. My mbti is ENTP, I like to try all new and meaningful things. I have many hobbies such as fitness, skateboarding, playing games, singing, etc. But recently I am very addicted to Pokémon TCG. I hope to use this project to make something useful in the future.
 
 ## Assignment
 
@@ -192,70 +192,91 @@ will likely refine your design to make your implementation easier to use.
 
 - Component Design #1: TCG Inventory Manager
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A component for managing the inventory of TCG cards. This component allows users to store, remove, and track their card collection.
   - **Kernel Methods**:
-    - `void addCard(TCGCard card)`
-    - `TCGCard removeAnyCard()`
-    - `boolean hasCard()`
-    - `int numberOfCards()`
+    - `void addItem(TCGItem item)`: Adds a new item to the inventory.
+    - `TCGItem removeItem(String itemId)`: Removes an item from the inventory by ID and returns it.
+    - `boolean hasItem(String itemId)`: Checks whether a specific item is in stock.
+    - `int getTotalItemCount()`: Returns the total number of items in the inventory.
   - **Secondary Methods**:
-    - `TCGCard getMostValuableCard()`
-    -
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+    - `List<TCGItem> getItemsByCategory(String category)`: Retrieves all items under a specific category (e.g., single cards, booster boxes, cases).
+    - `void sortInventoryByPrice()`: Sorts the inventory based on item prices.
+    - `void transferItem(TCGInventoryManager targetInventory, String itemId)`: Moves an item from one inventory to another using removeItem() and addItem().
+    - `List<TCGItem> searchItems(String keyword)`: Returns items matching a search query based on name, type, or set.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
-  - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
-  - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
-  - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, since users can add and remove cards, the inventory changes over time.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - It may require a helper class to manage product details like name,type,price
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, for defining item categories (SINGLE_CARD, BOOSTER_BOX, CASE)
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - transferItem() uses removeItem() and addCard() to Moves a card from one inventory to another
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: TCG Marketplace
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A Marketplace component that allows users to buy and sell cards/Box on the platform and track market prices.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `void listItemForSale(TCGItem item, double price)`: Lists an item for sale at a specified price.
+    - `void buyItem(TCGItem item, User buyer)`: Facilitates the purchase of an item by a user.
+    - `boolean isItemAvailable(String itemId)`: Checks whether a specific item is listed for sale.
+    - `double getItemPrice(String itemId)`: Returns the current market price of an item.
+    - `void removeItemFromSale(String itemId)`: Removes an item from sale.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+   - `List<TCGItem> getAllItemsForSale()`: Retrieves all items currently listed for sale using isItemAvailable().
+   - `List<TCGItem> getItemsBelowPrice(double maxPrice)`: Filters and returns items listed below a given price using getAllItemsForSale().
+   - `double getAverageMarketPrice(TCGItem item)`: Computes the historical average price of an item based on getItemPrice() over multiple listings.
+   - `List<TCGItem> getUserListedItems(User seller)`: Retrieves all active listings of a specific user by filtering getAllItemsForSale().
+   - `void updateMarketPrices()`: Synchronizes market prices periodically using an external API and updates values via getItemPrice().
+   - `List<TCGItem> getRecommendedItems(User user)`: Suggests similar items based on a user’s previous purchases and market trends.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, as the listing and prices will changing with user activity
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't know
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, for item categories (SINGLE_CARD, BOOSTER_BOX, CASE) and transaction statuses (LISTED, SOLD, CANCELLED).
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, getAverageMarketPrice() computes an average from repeated calls to getItemPrice()
+
+- Component Design #3:TCG User Account Management
+  - **Description**:
+    - This component manages user accounts, including order tracking, wishlist management, and purchase history.
+  - **Kernel Methods**:
+    - `void createUserAccount(String username, String email)`: Initializes a new user account
+    - `boolean authenticateUser(String username, String password)`: Verifies login credentials
+    - `void updateUserProfile(User user, String newEmail)`: Updates a user’s profile information
+    - `void deactivateUserAccount(User user)`: Disables a user’s account.
+    - `void placeOrder(User user, List<TCGItem> items)`: Processes an order for a user.
+  - **Secondary Methods**:
+    - `List<User> getAllActiveUsers()`: Retrieves all currently active users.
+    - `boolean isUserActive(User user)`: Checks if a user’s account is currently active.
+    - `List<Order> getUserOrderHistory(User user)`: Returns a user’s past orders.
+    - `void addToWishlist(User user, TCGItem item)`: Adds an item to the user’s wishlist.
+    - `List<TCGItem> getWishlist(User user)`: Retrieves the user’s wishlist.
+    - `void resetUserPassword(User user, String newPassword)`: Allows users to reset their passwords securely.
+  - **Additional Considerations** (*note*: "I don't know" is an acceptable
+    answer for each of the following questions):
+    - Would this component be mutable? Answer and explain:
+      - Yes, as user accounts and activity logs change dynamically.
+    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+      Answer and explain:
+      - Yes, an Order class for purchase records and a Wishlist class for tracking favorite items
+    - Would this component need any enums or constants (e.g.,
+      `Program.Instruction`)? Answer and explain:
+      - Yes, for user roles (BUYER, SELLER, ADMIN) and account statuses (ACTIVE, SUSPENDED, DEACTIVATED).
+    - Can you implement your secondary methods using your kernel methods?
+      Answer, explain, and give at least one example:
+      - Yes. For example, getUserOrderHistory() retrieves stored purchase records from placeOrder(), and getWishlist() is built from addToWishlist().
 
 ## Post-Assignment
 
