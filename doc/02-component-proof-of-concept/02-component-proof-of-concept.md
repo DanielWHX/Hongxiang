@@ -162,8 +162,6 @@ completed the assignment.
 
 ### Changelog
 
-<!-- TODO: update CHANGELOG then delete this comment -->
-
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
 Here's what I would expect to see at the minimum:
@@ -177,15 +175,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
-## YYYY.MM.DD
+## 2022.02.06
 
 ### Added
 
-- Designed a proof of concept for <!-- insert name of component here --> component
+- Designed a proof of concept for 'TCGMarketplace' component
+- Designed a proof of concept for 'TCGItem' component
+- Designed a proof of concept for 'User' component
+- Create 'Main.java' to test functionality
+
 
 ### Updated
 
-- Changed design to include ...
+- Adjusted `updateMarketPrices()` to simulate realistic price fluctuations.
 
 ```
 
@@ -196,8 +198,6 @@ like to accomplish that, you will need to make GitHub releases after each pull
 request merge (or at least tag your commits). This is not required.
 
 ### Submission
-
-<!-- TODO: read the submission instructions then delete this comment -->
 
 Assuming that your project is in a GitHub repo somewhere and your changes are on
 a proof-of-concept branch, then what we'll want you to do is create a pull
@@ -220,7 +220,6 @@ to look over your changes. Otherwise, you defer needed changes to later pull
 requests, which could sacrifice the overall quality of your work or result in
 major rework.
 
-<!-- TODO: paste the URL to Carmen then delete this comment -->
 
 ### Peer Review
 
@@ -250,8 +249,6 @@ table).
 If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
-
-<!-- TODO: follow the link to share your feedback then delete this comment -->
 
 [pottery-fails]: https://www.youtube.com/shorts/Kqb9l113F_0?feature=share
 [survey]: https://forms.gle/dumXHo6A4Enucdkq9
