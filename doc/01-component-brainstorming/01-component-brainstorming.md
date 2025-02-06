@@ -285,10 +285,6 @@ completed the assignment.
 
 ### Changelog
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 7a4b440d1a5b1cd64aa07aa984a07f680e349e5e
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
 Since this is likely the first time you've done this, we would recommend
@@ -335,15 +331,8 @@ all your work is there before submitting. For future assignments, you will
 just be submitting a link to a pull request. This will be the only time
 you have to submit any PDFs.
 
-<<<<<<< HEAD
 ### Peer Review
 
-=======
-
-### Peer Review
-
-
->>>>>>> 7a4b440d1a5b1cd64aa07aa984a07f680e349e5e
 Following the completion of this assignment, you will be assigned three
 students' component brainstorming assignments for review. Your job during the
 peer review process is to help your peers flesh out their designs. Specifically,
@@ -369,10 +358,6 @@ If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 7a4b440d1a5b1cd64aa07aa984a07f680e349e5e
 
 [example-components]: https://therenegadecoder.com/code/the-never-ending-list-of-small-programming-project-ideas/
 [markdown-to-pdf-guide]: https://therenegadecoder.com/blog/how-to-convert-markdown-to-a-pdf-3-quick-solutions/
