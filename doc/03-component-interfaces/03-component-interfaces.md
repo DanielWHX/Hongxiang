@@ -2,7 +2,11 @@
 
 - **Name**: HongxiangWang
 - **Dot Number**: wang.14953
+<<<<<<< HEAD
 - **Due Date**: Mar/4
+=======
+- **Due Date**: no idea I did it ahead
+>>>>>>> 4d79bc8cc65d6f13d9dfcc49edaac7571388d54f
 
 ## Assignment Overview
 
@@ -44,7 +48,6 @@ proof-of-concept, you should be able to answer this question to some extent.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
 
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
@@ -154,7 +157,6 @@ to see them. If you don't like this workflow, you may try following the
 rebase strategies described [here](https://stackoverflow.com/questions/35790561/working-while-waiting-for-pending-pr)
 and [here](https://stackoverflow.com/questions/18021888/continue-working-on-a-git-branch-after-making-a-pull-request).
 
-<!-- TODO: make a new branch from main then delete this comment -->
 
 ## Assignment Tasks
 

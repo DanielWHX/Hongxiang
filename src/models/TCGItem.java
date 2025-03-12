@@ -1,3 +1,4 @@
+package models;
 
 //class representing a TCG item
 import java.util.ArrayList;
