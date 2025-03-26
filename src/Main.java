@@ -1,24 +1,60 @@
+import interfaces.TCGMarketplace;
 import models.TCGItem;
 import models.User;
-import services.TCGMarketplaceImpl;
+import services.TCGMarketplace1;
 
 public class Main {
     public static void main(String[] args) {
-        TCGMarketplaceImpl marketplace = new TCGMarketplaceImpl();
+        // Use the concrete implementation
+        TCGMarketplace marketplace = new TCGMarketplace1();
 
-        // create items
-        TCGItem item1 = new TCGItem("001", "Umbreon ex", 340);
-        TCGItem item2 = new TCGItem("002", "Sylveon ex", 127);
+        // Create items
+        TCGItem item1 = new TCGItem("001", "Umbreon ex", 340.00);
+        TCGItem item2 = new TCGItem("002", "Sylveon ex", 127.00);
+        TCGItem item3 = new TCGItem("003", "Pikachu VMAX", 88.88);
 
-        // create user
+        // Create user
         User buyer = new User("14953", "Daniel");
 
-        // upload items for sale
+        // List items for sale
         marketplace.listItemForSale(item1);
         marketplace.listItemForSale(item2);
+        marketplace.listItemForSale(item3);
 
-        // buy items
-        marketplace.buyItem("001", buyer);
+        // Display all items
+        System.out.println("All items for sale:");
+        for (TCGItem item : marketplace.getAllItemsForSale()) {
+            System.out.println("- " + item.getName() + ": $" + item.getPrice());
+        }
+
+        // Display items below a certain price
+        System.out.println("\nItems below $200:");
+        for (TCGItem item : marketplace.getItemsBelowPrice(200)) {
+            System.out.println("- " + item.getName());
+        }
+
+        // Check average market price
+        System.out.println("\nAverage price of Umbreon ex: $" + String
+                .format("%.2f", marketplace.getAverageMarketPrice(item1)));
+
+        // Buy an item
+        System.out.println("\nBuying 'Sylveon ex'...");
         marketplace.buyItem("002", buyer);
+
+        // Try to buy the same item again
+        System.out.println("\nTrying to buy 'Sylveon ex' again...");
+        marketplace.buyItem("002", buyer);
+
+        // Check availability
+        System.out.println("\nIs Pikachu VMAX available? "
+                + marketplace.isItemAvailable("003"));
+
+        // Update market prices
+        System.out.println("\nUpdating market prices...");
+        marketplace.updateMarketPrices();
+
+        // Print marketplace summary
+        System.out.println("\nMarketplace toString():");
+        System.out.println(marketplace.toString());
     }
 }
