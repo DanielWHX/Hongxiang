@@ -2,7 +2,7 @@
 
 - **Name**: HXW
 - **Dot Number**: wang.14953
-- **Due Date**: 03/26
+- **Due Date**: 3/26
 
 ## Assignment Overview
 
