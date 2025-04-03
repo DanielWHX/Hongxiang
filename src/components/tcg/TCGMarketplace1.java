@@ -1,42 +1,17 @@
-package services;
-
-import interfaces.TCGMarketplaceKernel;
-import models.TCGItem;
-import models.User;
+package components.tcg;
 
 /**
  * Concrete implementation of TCGMarketplace component. Implements the kernel
  * methods using the internal representation.
  */
-public class TCGMarketplace1 extends TCGMarketplaceSecondary
-        implements TCGMarketplaceKernel {
+public class TCGMarketplace1 extends TCGMarketplaceSecondary {
 
-    /**
-     * Lists an item for sale.
-     * 
-     * @param item
-     *            the item to list
-     * @updates this
-     * @requires item != null
-     * @ensures this includes the new item listed
-     */
     @Override
     public void listItemForSale(TCGItem item) {
         assert item != null : "Item must not be null";
         this.itemsForSale.put(item.getItemId(), item);
     }
 
-    /**
-     * Allows a user to buy an item.
-     * 
-     * @param itemId
-     *            the ID of the item
-     * @param buyer
-     *            the buyer of the item
-     * @updates this
-     * @requires itemId exists and buyer != null
-     * @ensures item is marked as sold and removed from active listings
-     */
     @Override
     public void buyItem(String itemId, User buyer) {
         assert buyer != null : "Buyer must not be null";
@@ -50,7 +25,7 @@ public class TCGMarketplace1 extends TCGMarketplaceSecondary
 
     /**
      * Checks if an item is available.
-     * 
+     *
      * @param itemId
      *            the ID of the item
      * @return true if available
@@ -63,7 +38,7 @@ public class TCGMarketplace1 extends TCGMarketplaceSecondary
 
     /**
      * Gets the price of a listed item.
-     * 
+     *
      * @param itemId
      *            the ID of the item
      * @return the price or -1 if not found

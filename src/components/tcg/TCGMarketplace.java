@@ -6,6 +6,7 @@ import models.TCGItem;
 import models.User;
 
 public interface TCGMarketplace extends TCGMarketplaceKernel {
+
     List<TCGItem> getAllItemsForSale();
 
     List<TCGItem> getItemsBelowPrice(double maxPrice);
