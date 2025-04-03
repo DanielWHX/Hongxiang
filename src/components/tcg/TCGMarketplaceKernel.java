@@ -1,7 +1,4 @@
-package tcg;
-
-import models.TCGItem;
-import models.User;
+package components.tcg;
 
 public interface TCGMarketplaceKernel {
 
@@ -14,7 +11,7 @@ public interface TCGMarketplaceKernel {
      * @requires item != null
      * @ensures this includes the new item listed
      */
-    void listItemForSale(TCGItem item);
+    void listItemForSale(TCGItem item); //set
 
     /**
      * Allows a user to buy an item.
@@ -27,7 +24,7 @@ public interface TCGMarketplaceKernel {
      * @requires itemId exists and buyer != null
      * @ensures item is marked as sold and removed from active listings
      */
-    void buyItem(String itemId, User buyer);
+    void buyItem(String itemId, User buyer); //remove
 
     boolean isItemAvailable(String itemId);
 
