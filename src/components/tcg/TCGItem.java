@@ -1,28 +1,46 @@
 package models;
 
-//class representing a TCG item
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class representing a TCG item in the marketplace.
+ */
 public class TCGItem {
     private String itemID;
     private String itemName;
     private double price;
+    private int quantity;
+    private String category;
     private List<Double> priceHistory;
     private boolean isAvailable;
 
-    //constructor method(initialize a new TCG item)
-    public TCGItem(String itemID, String itemName, double price) {
+    /**
+     * Constructor to initialize a new TCG item.
+     * 
+     * @param itemID
+     *            unique identifier
+     * @param itemName
+     *            name of the item
+     * @param price
+     *            initial price
+     * @param quantity
+     *            initial stock quantity
+     * @param category
+     *            category name
+     */
+    public TCGItem(String itemID, String itemName, double price, int quantity,
+            String category) {
         this.itemID = itemID;
         this.itemName = itemName;
         this.price = price;
-        //give default value for convenience
+        this.quantity = quantity;
+        this.category = category;
         this.priceHistory = new ArrayList<>();
         this.priceHistory.add(price);
         this.isAvailable = true;
     }
 
-    //getter method for itemID (to get variables)
     public final String getItemId() {
         return this.itemID;
     }
@@ -35,22 +53,40 @@ public class TCGItem {
         return this.price;
     }
 
+    public final int getQuantity() {
+        return this.quantity;
+    }
+
+    public final String getCategory() {
+        return this.category;
+    }
+
     public final List<Double> getPriceHistory() {
         return this.priceHistory;
     }
 
     public final boolean isAvailable() {
-        return this.isAvailable;
+        return this.isAvailable && this.quantity > 0;
     }
 
-    //update price(sync with history price at the same time)
     public void updatePrice(double newPrice) {
         this.price = newPrice;
         this.priceHistory.add(newPrice);
     }
 
-    //mark item as sold
+    public void updateQuantity(int newQuantity) {
+        this.quantity = newQuantity;
+        this.isAvailable = newQuantity > 0;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public void markAsSold() {
-        this.isAvailable = false;
+        this.quantity--;
+        if (this.quantity <= 0) {
+            this.isAvailable = false;
+        }
     }
 }
