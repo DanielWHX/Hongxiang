@@ -1,4 +1,4 @@
-package models;
+package components.tcg;
 
 public class User {
     private String userId;

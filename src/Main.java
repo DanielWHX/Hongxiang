@@ -1,7 +1,7 @@
-import interfaces.TCGMarketplace;
-import models.TCGItem;
-import models.User;
-import services.TCGMarketplace1;
+import components.tcg.TCGItem;
+import components.tcg.TCGMarketplace;
+import components.tcg.TCGMarketplace1;
+import components.tcg.User;
 
 public class Main {
     public static void main(String[] args) {
