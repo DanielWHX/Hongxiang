@@ -1,4 +1,4 @@
-package models;
+package components.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class TCGItem {
 
     /**
      * Constructor to initialize a new TCG item.
-     * 
+     *
      * @param itemID
      *            unique identifier
      * @param itemName

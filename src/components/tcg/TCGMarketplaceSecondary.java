@@ -1,8 +1,11 @@
-package components;
+package components.tcg;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import components.model.TCGItem;
+import components.model.User;
 
 /**
  * Abstract class providing default secondary method implementations for a
@@ -44,9 +47,21 @@ public abstract class TCGMarketplaceSecondary implements ITCGMarketplace {
             String categoryName);
 
     // --------- Secondary Method Implementations ---------
-
+    /**
+     * Provides access to the internal map storing all items by itemId.
+     * protected：subclass can access
+     *
+     * @return the map containing all items, keyed by item ID
+     */
     protected abstract Map<String, TCGItem> getItemMap();
 
+    /**
+     * Provides access to the internal map storing category-to-itemID mappings.
+     * Each category name maps to a list of item IDs that belong to that
+     * category. protected：subclass can access
+     *
+     * @return the category map: category name ➝ list of item IDs
+     */
     protected abstract Map<String, List<String>> getCategoryMap();
 
     @Override
