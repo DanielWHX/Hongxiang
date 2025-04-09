@@ -26,14 +26,14 @@ public class Main {
         marketplace.assignItemToCategory("002", "Booster Box");
         marketplace.assignItemToCategory("003", "Psychic Set");
 
-        // Add a user
+        // Add a user.
         User user = new User("U001", "Daniel");
 
-        // Buy an item
+        // Buy an item.
         System.out.println("Buying item 001...");
         marketplace.buyItem("001", user);
 
-        // Print results
+        // Print results.
         System.out.println("Available? " + marketplace.isItemAvailable("001"));
         System.out.println("Quantity left: " + marketplace.getQuantity("001"));
         System.out.println("Items in 'Booster Box': "
