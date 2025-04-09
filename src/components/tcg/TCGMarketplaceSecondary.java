@@ -2,19 +2,21 @@ package components.tcg;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import components.model.TCGItem;
 import components.model.User;
 
 /**
- * Abstract class providing default secondary method implementations for a
- * marketplace. Implements ITCGMarketplace but leaves Kernel methods abstract.
+ * Abstract class that implements secondary methods using composition.
+ * Subclasses must provide itemManager and categoryManager.
  */
 public abstract class TCGMarketplaceSecondary implements ITCGMarketplace {
 
-    // --------- Kernel Method Stubs (to be implemented by subclass) ---------
+    // Composition components to be provided by subclass
+    protected ItemManager itemManager;
+    protected CategoryManager categoryManager;
 
+    // --------- Kernel Method Stubs ---------
     @Override
     public abstract void listItemForSale(TCGItem item);
 
@@ -46,28 +48,11 @@ public abstract class TCGMarketplaceSecondary implements ITCGMarketplace {
     public abstract void assignItemToCategory(String itemId,
             String categoryName);
 
-    // --------- Secondary Method Implementations ---------
-    /**
-     * Provides access to the internal map storing all items by itemId.
-     * protected：subclass can access
-     *
-     * @return the map containing all items, keyed by item ID
-     */
-    protected abstract Map<String, TCGItem> getItemMap();
-
-    /**
-     * Provides access to the internal map storing category-to-itemID mappings.
-     * Each category name maps to a list of item IDs that belong to that
-     * category. protected：subclass can access
-     *
-     * @return the category map: category name ➝ list of item IDs
-     */
-    protected abstract Map<String, List<String>> getCategoryMap();
-
+    // --------- Secondary Methods ---------
     @Override
     public void buyItem(String itemId, User buyer) {
-        if (this.isItemAvailable(itemId)) {
-            TCGItem item = this.getItemMap().get(itemId);
+        if (this.itemManager.isAvailable(itemId)) {
+            TCGItem item = this.itemManager.getItem(itemId);
             item.markAsSold();
             System.out.println(buyer.getUserName() + " bought " + item.getName()
                     + " for $" + item.getPrice());
@@ -78,20 +63,18 @@ public abstract class TCGMarketplaceSecondary implements ITCGMarketplace {
 
     @Override
     public int getQuantity(String itemId) {
-        return this.getItemMap().containsKey(itemId)
-                ? this.getItemMap().get(itemId).getQuantity()
-                : 0;
+        return this.itemManager.getQuantity(itemId);
     }
 
     @Override
     public List<String> getAllCategories() {
-        return new ArrayList<>(this.getCategoryMap().keySet());
+        return this.categoryManager.getAllCategories();
     }
 
     @Override
     public List<TCGItem> searchItems(String keyword) {
         List<TCGItem> result = new ArrayList<>();
-        for (TCGItem item : this.getItemMap().values()) {
+        for (TCGItem item : this.itemManager.getAllItems()) {
             if (item.getName().toLowerCase().contains(keyword.toLowerCase())) {
                 result.add(item);
             }
@@ -101,29 +84,27 @@ public abstract class TCGMarketplaceSecondary implements ITCGMarketplace {
 
     @Override
     public void applyDiscount(String itemId, double percent) {
-        if (this.getItemMap().containsKey(itemId)) {
-            TCGItem item = this.getItemMap().get(itemId);
-            double discountedPrice = item.getPrice() * (1 - percent / 100.0);
-            item.updatePrice(discountedPrice);
+        TCGItem item = this.itemManager.getItem(itemId);
+        if (item != null) {
+            double discounted = item.getPrice() * (1 - percent / 100.0);
+            item.updatePrice(discounted);
         }
     }
 
     @Override
     public void restockItem(String itemId, int amount) {
-        if (this.getItemMap().containsKey(itemId) && amount > 0) {
-            TCGItem item = this.getItemMap().get(itemId);
-            item.updateQuantity(item.getQuantity() + amount);
-        }
+        int current = this.itemManager.getQuantity(itemId);
+        this.itemManager.updateQuantity(itemId, current + amount);
     }
 
     @Override
     public List<TCGItem> getItemsByCategory(String category) {
         List<TCGItem> result = new ArrayList<>();
-        if (this.getCategoryMap().containsKey(category)) {
-            for (String itemId : this.getCategoryMap().get(category)) {
-                if (this.getItemMap().containsKey(itemId)) {
-                    result.add(this.getItemMap().get(itemId));
-                }
+        for (String itemId : this.categoryManager
+                .getItemIdsByCategory(category)) {
+            TCGItem item = this.itemManager.getItem(itemId);
+            if (item != null) {
+                result.add(item);
             }
         }
         return result;
@@ -132,7 +113,7 @@ public abstract class TCGMarketplaceSecondary implements ITCGMarketplace {
     @Override
     public List<TCGItem> getAllItemsForSale() {
         List<TCGItem> result = new ArrayList<>();
-        for (TCGItem item : this.getItemMap().values()) {
+        for (TCGItem item : this.itemManager.getAllItems()) {
             if (item.isAvailable()) {
                 result.add(item);
             }
@@ -143,10 +124,10 @@ public abstract class TCGMarketplaceSecondary implements ITCGMarketplace {
     @Override
     public void transferItemToAnotherMarketplace(ITCGMarketplace other,
             String itemId) {
-        if (this.isItemAvailable(itemId)) {
-            TCGItem item = this.getItemMap().get(itemId);
+        if (this.itemManager.isAvailable(itemId)) {
+            TCGItem item = this.itemManager.getItem(itemId);
             other.listItemForSale(item);
-            this.removeItem(itemId);
+            this.itemManager.removeItem(itemId);
         }
     }
 }

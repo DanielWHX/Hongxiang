@@ -135,8 +135,6 @@ Below is further rationale/explanation for the rubric items above:
 > rebase strategies described [here](https://stackoverflow.com/questions/35790561/working-while-waiting-for-pending-pr)
 > and [here](https://stackoverflow.com/questions/18021888/continue-working-on-a-git-branch-after-making-a-pull-request).
 
-<!-- TODO: make a new branch from main then delete this comment -->
-
 ## Assignment Tasks
 
 Your primary task for this assignment is to create an abstract class that falls
@@ -156,7 +154,6 @@ completed the assignment.
 
 ### Changelog
 
-<!-- TODO: update CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -171,15 +168,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
-## YYYY.MM.DD
+## 2025.04.09
 
 ### Added
 
-- Designed abstract class for <!-- insert name of component here --> component
+- Designed abstract class for `TCGMarketplaceSecondary` component
+- Implemented `ItemManager` class for item-level operations (add, update, query, remove).
+- Implemented `CategoryManager` class to manage category mappings.
+- Refactored `TCGMarketplace1` to use composition instead of inheritance.
+- Connected `TCGMarketplace1` to `TCGMarketplaceSecondary` via subclassing to preserve OSU discipline.
 
 ### Updated
 
-- Changed design to include ...
+- Replaced direct use of `itemMap` and `categoryMap` with calls to `ItemManager` and `CategoryManager`.
+- Removed reliance on `protected` kernel field access in abstract class.
 
 ```
 
@@ -190,8 +192,6 @@ like to accomplish that, you will need to make GitHub releases after each pull
 request merge (or at least tag your commits). This is not required.
 
 ### Submission
-
-<!-- TODO: read the submission instructions then delete this comment -->
 
 Assuming that your project is in a GitHub repo somewhere and your changes are on
 a proof-of-concept branch, then what we'll want you to do is create a pull
@@ -243,7 +243,6 @@ If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
 
-<!-- TODO: follow the link to share your feedback then delete this comment -->
 
 [lab-14]: https://web.cse.ohio-state.edu/software/2221/web-sw1/extras/instructions/natural-number-static/natural-number-static.html
 [lab-21]: https://web.cse.ohio-state.edu/software/2221/web-sw1/extras/instructions/set-instance-methods/set-instance-methods.html
