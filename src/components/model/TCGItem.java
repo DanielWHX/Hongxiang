@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/components/tcg/TCGItem.java
 package components.tcg;
+=======
+package components.model;
+>>>>>>> 4e98dc3ee1682ca2d6d468a484d88c61564e7a43:src/components/model/TCGItem.java
 
 //class representing a TCG item
 import java.util.ArrayList;
@@ -11,8 +15,27 @@ public class TCGItem {
     private List<Double> priceHistory;
     private boolean isAvailable;
 
+<<<<<<< HEAD:src/components/tcg/TCGItem.java
     //constructor method(initialize a new TCG item)
     public TCGItem(String itemID, String itemName, double price) {
+=======
+    /**
+     * Constructor to initialize a new TCG item.
+     *
+     * @param itemID
+     *            unique identifier
+     * @param itemName
+     *            name of the item
+     * @param price
+     *            initial price
+     * @param quantity
+     *            initial stock quantity
+     * @param category
+     *            category name
+     */
+    public TCGItem(String itemID, String itemName, double price, int quantity,
+            String category) {
+>>>>>>> 4e98dc3ee1682ca2d6d468a484d88c61564e7a43:src/components/model/TCGItem.java
         this.itemID = itemID;
         this.itemName = itemName;
         this.price = price;

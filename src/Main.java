@@ -1,60 +1,51 @@
+<<<<<<< HEAD
 import components.tcg.TCGItem;
 import components.tcg.TCGMarketplace;
 import components.tcg.TCGMarketplace1;
 import components.tcg.User;
+=======
+import components.model.TCGItem;
+import components.model.User;
+import components.tcg.TCGMarketplace1;
+>>>>>>> 4e98dc3ee1682ca2d6d468a484d88c61564e7a43
 
 public class Main {
     public static void main(String[] args) {
-        // Use the concrete implementation
-        TCGMarketplace marketplace = new TCGMarketplace1();
+        TCGMarketplace1 marketplace = new TCGMarketplace1();
 
-        // Create items
-        TCGItem item1 = new TCGItem("001", "Umbreon ex", 340.00);
-        TCGItem item2 = new TCGItem("002", "Sylveon ex", 127.00);
-        TCGItem item3 = new TCGItem("003", "Pikachu VMAX", 88.88);
+        // Add categories
+        marketplace.addCategory("Booster Box");
+        marketplace.addCategory("Psychic Set");
 
-        // Create user
-        User buyer = new User("14953", "Daniel");
+        // Add items
+        TCGItem item1 = new TCGItem("001", "Charizard EX", 300.0, 3,
+                "Booster Box");
+        TCGItem item2 = new TCGItem("002", "Pikachu VMAX", 150.0, 2,
+                "Booster Box");
+        TCGItem item3 = new TCGItem("003", "Sylveon GX", 120.0, 5,
+                "Psychic Set");
 
-        // List items for sale
         marketplace.listItemForSale(item1);
         marketplace.listItemForSale(item2);
         marketplace.listItemForSale(item3);
 
-        // Display all items
-        System.out.println("All items for sale:");
-        for (TCGItem item : marketplace.getAllItemsForSale()) {
-            System.out.println("- " + item.getName() + ": $" + item.getPrice());
-        }
+        marketplace.assignItemToCategory("001", "Booster Box");
+        marketplace.assignItemToCategory("002", "Booster Box");
+        marketplace.assignItemToCategory("003", "Psychic Set");
 
-        // Display items below a certain price
-        System.out.println("\nItems below $200:");
-        for (TCGItem item : marketplace.getItemsBelowPrice(200)) {
-            System.out.println("- " + item.getName());
-        }
+        // Add a user.
+        User user = new User("U001", "Daniel");
 
-        // Check average market price
-        System.out.println("\nAverage price of Umbreon ex: $" + String
-                .format("%.2f", marketplace.getAverageMarketPrice(item1)));
+        // Buy an item.
+        System.out.println("Buying item 001...");
+        marketplace.buyItem("001", user);
 
-        // Buy an item
-        System.out.println("\nBuying 'Sylveon ex'...");
-        marketplace.buyItem("002", buyer);
-
-        // Try to buy the same item again
-        System.out.println("\nTrying to buy 'Sylveon ex' again...");
-        marketplace.buyItem("002", buyer);
-
-        // Check availability
-        System.out.println("\nIs Pikachu VMAX available? "
-                + marketplace.isItemAvailable("003"));
-
-        // Update market prices
-        System.out.println("\nUpdating market prices...");
-        marketplace.updateMarketPrices();
-
-        // Print marketplace summary
-        System.out.println("\nMarketplace toString():");
-        System.out.println(marketplace.toString());
+        // Print results.
+        System.out.println("Available? " + marketplace.isItemAvailable("001"));
+        System.out.println("Quantity left: " + marketplace.getQuantity("001"));
+        System.out.println("Items in 'Booster Box': "
+                + marketplace.getItemsByCategory("Booster Box"));
+        System.out.println(
+                "All available items: " + marketplace.getAllItemsForSale());
     }
 }

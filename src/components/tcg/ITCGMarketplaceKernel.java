@@ -1,14 +1,16 @@
-package interfaces;
+package components.tcg;
+
+import components.model.TCGItem;
 
 /**
  * Kernel interface for the TCG Marketplace. Provides the minimal core
  * functionality for managing items and categories.
  */
-public interface TCGMarketplaceKernel {
+public interface ITCGMarketplaceKernel {
 
     /**
      * Lists a new item for sale.
-     * 
+     *
      * @param item
      *            the item to be listed
      * @updates this
@@ -17,8 +19,8 @@ public interface TCGMarketplaceKernel {
     void listItemForSale(TCGItem item);
 
     /**
-     * Checks if an item is currently available for purchase.
-     * 
+     * Checks if an item is currently available in stock
+     *
      * @param itemId
      *            the item's ID
      * @return true if the item is available, false otherwise
@@ -27,7 +29,7 @@ public interface TCGMarketplaceKernel {
 
     /**
      * Gets the price of a specific item.
-     * 
+     *
      * @param itemId
      *            the item ID
      * @return the current price
@@ -37,7 +39,7 @@ public interface TCGMarketplaceKernel {
 
     /**
      * Removes an item from sale.
-     * 
+     *
      * @param itemId
      *            the ID of the item to remove
      * @updates this
@@ -47,7 +49,7 @@ public interface TCGMarketplaceKernel {
 
     /**
      * Updates the price of a given item.
-     * 
+     *
      * @param itemId
      *            the item ID
      * @param price
@@ -60,7 +62,7 @@ public interface TCGMarketplaceKernel {
 
     /**
      * Updates the quantity of an item.
-     * 
+     *
      * @param itemId
      *            the ID of the item
      * @param quantity
@@ -72,7 +74,7 @@ public interface TCGMarketplaceKernel {
 
     /**
      * Adds a new category.
-     * 
+     *
      * @param categoryName
      *            the name of the category
      * @ensures category is added to internal category map if not present
@@ -81,7 +83,7 @@ public interface TCGMarketplaceKernel {
 
     /**
      * Removes a category.
-     * 
+     *
      * @param categoryName
      *            the name of the category to remove
      * @requires category exists
@@ -92,7 +94,7 @@ public interface TCGMarketplaceKernel {
 
     /**
      * Checks whether a category exists.
-     * 
+     *
      * @param categoryName
      *            the category name to check
      * @return true if it exists, false otherwise
@@ -101,7 +103,7 @@ public interface TCGMarketplaceKernel {
 
     /**
      * Assigns an item to a category.
-     * 
+     *
      * @param itemId
      *            the ID of the item
      * @param categoryName
