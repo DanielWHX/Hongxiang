@@ -4,23 +4,15 @@ import components.model.TCGItem;
 
 public class TCGMarketplace1 extends TCGMarketplaceSecondary {
 
-    /**
-     * Convention: - Every item listed must have a unique itemId - Each item
-     * must have a non-negative price and quantity - All categories are non-null
-     * and non-empty strings
-     *
-     * Correspondence: - The internal state (itemManager, categoryManager)
-     * represents the current snapshot of the marketplace's inventory and
-     * category mappings. - Items are retrieved by itemId from itemManager; each
-     * item has price, quantity, and availability status embedded.
-     */
+    private ItemManager itemManager;
+    private CategoryManager categoryManager;
 
     public TCGMarketplace1() {
         this.itemManager = new ItemManager();
         this.categoryManager = new CategoryManager();
     }
 
-    // Implement kernel methods that call itemManager and categoryManager
+    // Constructor to initialize itemManager and categoryManager
     @Override
     public void listItemForSale(TCGItem item) {
         this.itemManager.addItem(item);

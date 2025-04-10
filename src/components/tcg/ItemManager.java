@@ -22,7 +22,8 @@ public class ItemManager {
     }
 
     public boolean isAvailable(String itemId) {
-        return this.itemMap.containsKey(itemId) && this.itemMap.get(itemId).isAvailable();
+        return this.itemMap.containsKey(itemId)
+                && this.itemMap.get(itemId).isAvailable();
     }
 
     public void updatePrice(String itemId, double price) {
@@ -46,7 +47,8 @@ public class ItemManager {
     }
 
     public int getQuantity(String itemId) {
-        return this.itemMap.containsKey(itemId) ? this.itemMap.get(itemId).getQuantity()
+        return this.itemMap.containsKey(itemId)
+                ? this.itemMap.get(itemId).getQuantity()
                 : 0;
     }
 }
