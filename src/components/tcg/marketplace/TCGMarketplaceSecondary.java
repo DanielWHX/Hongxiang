@@ -1,10 +1,10 @@
-package components.old;
+package components.tcg.marketplace;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import User;
-import components.tcg.TCGItem;
+import components.tcg.customer.User;
+import components.tcg.stock.TCGItem;
 
 /**
  * Abstract class that implements secondary methods using composition.

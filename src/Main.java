@@ -1,5 +1,6 @@
-import components.old.TCGMarketplace1;
-import components.tcg.TCGItem;
+import components.tcg.customer.User;
+import components.tcg.marketplace.TCGMarketplace1;
+import components.tcg.stock.TCGItem;
 
 public class Main {
         public static void main(String[] args) {

@@ -1,3 +1,4 @@
+package components.tcg.customer;
 
 public class User {
     private String userId;

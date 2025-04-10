@@ -1,8 +1,6 @@
-package components.old;
+package components.tcg.marketplace;
 
-import CategoryManager;
-import ItemManager;
-import components.tcg.TCGItem;
+import components.tcg.stock.TCGItem;
 
 public class TCGMarketplace1 extends TCGMarketplaceSecondary {
 

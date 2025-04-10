@@ -1,4 +1,4 @@
-package components.tcg;
+package components.tcg.stock;
 
 import components.standard.Standard;
 

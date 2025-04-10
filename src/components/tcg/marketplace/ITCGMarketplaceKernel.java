@@ -1,6 +1,6 @@
-package components.old;
+package components.tcg.marketplace;
 
-import components.tcg.TCGItem;
+import components.tcg.stock.TCGItem;
 
 /**
  * Kernel interface for the TCG Marketplace. Provides the minimal core
