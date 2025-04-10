@@ -1,11 +1,10 @@
-package components.tcg;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import components.model.TCGItem;
+import components.tcg.TCGItem;
 
 /**
  * Manager class responsible for managing TCG items in the marketplace.

@@ -1,52 +1,16 @@
-package components.tcg;
+package components.old;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import components.model.TCGItem;
-import components.model.User;
+import User;
+import components.tcg.TCGItem;
 
 /**
  * Abstract class that implements secondary methods using composition.
  * Subclasses must provide itemManager and categoryManager.
  */
 public abstract class TCGMarketplaceSecondary implements ITCGMarketplace {
-
-    // Composition components to be provided by subclass
-    protected ItemManager itemManager;
-    protected CategoryManager categoryManager;
-
-    // --------- Kernel Method Stubs ---------
-    @Override
-    public abstract void listItemForSale(TCGItem item);
-
-    @Override
-    public abstract boolean isItemAvailable(String itemId);
-
-    @Override
-    public abstract double getItemPrice(String itemId);
-
-    @Override
-    public abstract void removeItem(String itemId);
-
-    @Override
-    public abstract void updatePrice(String itemId, double price);
-
-    @Override
-    public abstract void updateQuantity(String itemId, int quantity);
-
-    @Override
-    public abstract void addCategory(String categoryName);
-
-    @Override
-    public abstract void removeCategory(String categoryName);
-
-    @Override
-    public abstract boolean hasCategory(String categoryName);
-
-    @Override
-    public abstract void assignItemToCategory(String itemId,
-            String categoryName);
 
     // --------- Secondary Methods ---------
     @Override

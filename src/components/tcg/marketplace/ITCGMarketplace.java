@@ -1,9 +1,9 @@
-package components.tcg;
+package components.old;
 
 import java.util.List;
 
-import components.model.TCGItem;
-import components.model.User;
+import User;
+import components.tcg.TCGItem;
 
 /**
  * Enhanced interface for the TCG Marketplace component. This interface contains

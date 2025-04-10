@@ -1,12 +1,22 @@
-package components.tcg;
+package components.old;
 
-import components.model.TCGItem;
+import components.tcg.TCGItem;
 
 /**
  * Kernel interface for the TCG Marketplace. Provides the minimal core
  * functionality for managing items and categories.
  */
-public interface ITCGMarketplaceKernel {
+public interface TCGStockKernel {
+
+    /**
+     * Removes an item from sale.
+     *
+     * @param itemId
+     *            the ID of the item to remove
+     * @updates this
+     * @ensures the item is removed from internal map
+     */
+    void removeItem(String itemId);
 
     /**
      * Lists a new item for sale.
@@ -19,7 +29,7 @@ public interface ITCGMarketplaceKernel {
     void listItemForSale(TCGItem item);
 
     /**
-     * Checks if an item is currently available in stock
+     * Checks if an item is currently available in stock.
      *
      * @param itemId
      *            the item's ID
@@ -36,16 +46,6 @@ public interface ITCGMarketplaceKernel {
      * @requires item exists
      */
     double getItemPrice(String itemId);
-
-    /**
-     * Removes an item from sale.
-     *
-     * @param itemId
-     *            the ID of the item to remove
-     * @updates this
-     * @ensures the item is removed from internal map
-     */
-    void removeItem(String itemId);
 
     /**
      * Updates the price of a given item.
