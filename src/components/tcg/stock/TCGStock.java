@@ -9,4 +9,6 @@ import java.util.List;
 public interface TCGStock extends TCGStockKernel {
 
     List<TCGItem> getItemsByName(String name);
+
+    void removeAllItems(TCGItem item);
 }
