@@ -107,7 +107,7 @@ public abstract class TCGStockSecondary implements TCGStock {
 
     @Override
     public int hashCode() {
-        // Hash code is based on the total stock and number of unique items
+        // Hash code is based on the total stock and number of unique items.
         return this.totalStock() * 31 + this.numberOfUniqueItems();
     }
 }
