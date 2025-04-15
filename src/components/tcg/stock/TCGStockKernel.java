@@ -3,51 +3,61 @@ package components.tcg.stock;
 import components.standard.Standard;
 
 /**
- * Kernel interface for the TCG Marketplace. Provides the minimal core
- * functionality for managing items and categories.
+ * Kernel interface for the TCG Stock component. Provides minimal core
+ * functionality for managing item stock.
  */
 public interface TCGStockKernel extends Standard<TCGStock> {
 
     /**
-     * Adds a TCGItem to the stock. If the item already exists, the count is
-     * incremented.
+     * Adds one copy of the given item to the stock.
      *
      * @param item
+     *            the item to add
+     * @updates this
+     * @ensures stock[item] += 1
      */
     void addItem(TCGItem item);
 
     /**
-     * Removes one copy of a TCGItem from the stock.
+     * Removes one copy of a random item from the stock.
      *
-     * @requires [item is in stock]
-     * @return
+     * @return the item that was removed
+     * @updates this
+     * @requires totalStock() > 0
      */
     TCGItem removeAnyItem();
 
     /**
-     * Removes one copy of a TCGItem from the stock.
+     * Removes one copy of the given item from the stock.
      *
-     * @param itemId
-     *            the ID of the item to remove
+     * @param item
+     *            the item to remove
+     * @return the removed item
      * @updates this
-     * @ensures the item is removed from internal map
+     * @requires isInStock(item)
      */
     TCGItem removeItem(TCGItem item);
 
     /**
-     * Gets the number of unique TCGItems in the stock.
+     * Checks if the given item is in stock.
      *
-     * @return
+     * @param item
+     *            the item to check
+     * @return true if item is in stock, false otherwise
+     */
+    boolean isInStock(TCGItem item);
+
+    /**
+     * Returns the number of unique items in the stock.
+     *
+     * @return count of unique item names
      */
     int numberOfUniqueItems();
 
     /**
-     * Gets the total number of items in stock.
+     * Returns the total number of items in stock.
      *
-     * @return
+     * @return total quantity of all items
      */
     int totalStock();
-
-    boolean isInStock(TCGItem item);
-
 }

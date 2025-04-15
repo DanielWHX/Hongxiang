@@ -97,4 +97,24 @@ public class TCGStock1 extends TCGStockSecondary {
         this.stock = that.stock;
         that.stock = new HashMap<>();
     }
+
+    //obj method
+    @Override
+    public String toString() {
+        return this.stock.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof TCGStock1))
+            return false;
+        TCGStock1 other = (TCGStock1) obj;
+        return this.stock.equals(other.stock);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.stock.hashCode();
+    }
+
 }
