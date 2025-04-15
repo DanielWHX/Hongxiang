@@ -16,16 +16,25 @@ public class TCGStock1 extends TCGStockSecondary {
 
     @Override
     public void addItem(TCGItem item) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException(
-                "Unimplemented method 'addItem'");
+        // increment the count of the item in stock
+        this.stock.put(item, this.stock.getOrDefault(item, 0) + 1);
     }
 
     @Override
-    public TCGItem removeAnyItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException(
-                "Unimplemented method 'removeAnyItem'");
+    public TCGItem removeItem(TCGItem item) {
+        // Remove one copy of the given item
+        if (!this.stock.containsKey(item)) {
+            throw new IllegalArgumentException("Item not in stock: " + item);
+        }
+
+        int count = this.stock.get(item);
+        if (count == 1) {
+            this.stock.remove(item);
+        } else {
+            this.stock.put(item, count - 1);
+        }
+
+        return item;
     }
 
     @Override
