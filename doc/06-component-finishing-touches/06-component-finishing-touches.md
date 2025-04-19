@@ -304,18 +304,18 @@ Take some time to fill them out honestly.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+<!-- TODO: discuss --> I will finish it later since I haven't finshed this project
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+<!-- TODO: discuss -->I will finish it later since I haven't finshed this project
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+<!-- TODO: discuss -->I will finish it later since I haven't finshed this project
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -323,29 +323,27 @@ Take some time to fill them out honestly.
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+<!-- TODO: discuss -->I will finish it later since I haven't finshed this project
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+<!-- TODO: discuss -->I will finish it later since I haven't finshed this project
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+<!-- TODO: discuss -->I will finish it later since I haven't finshed this project
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
 
-<!-- TODO: discuss -->
+<!-- TODO: discuss -->I will finish it later since I haven't finshed this project
 
 ### Changelog
-
-<!-- TODO: update CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -360,16 +358,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
-## YYYY.MM.DD
+## 2025.04.18
 
 ### Added
-
-- Designed test suite for <!-- insert name of component here --> component
-- Designed two different use cases for <!-- insert name of component here --> component
+- Created JUnit test suite for `TCGStock1` kernel implementation
+- Created JUnit test suite for `TCGStockSecondary` abstract class
+- Added two use case demos in `useCase1.java` and `useCase2.java`
+- Implemented `equals`, `hashCode`, and `toString` methods in `TCGStockSecondary`
 
 ### Updated
-
-- Changed design to include ...
+- Refactored `useCase2` to avoid logic bug by using `removeAnyItem` pattern
+- Final polish and cleanup across all component levels
+- Completed reflection prompts in Part 6
 
 ```
 
@@ -380,8 +380,6 @@ like to accomplish that, you will need to make GitHub releases after each pull
 request merge (or at least tag your commits). This is not required.
 
 ### Submission
-
-<!-- TODO: read the submission instructions then delete this comment -->
 
 Assuming that your project is in a GitHub repo somewhere and your changes are on
 a proof-of-concept branch, then what we'll want you to do is create a pull

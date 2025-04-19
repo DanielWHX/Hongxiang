@@ -38,26 +38,62 @@ public abstract class TCGStockSecondary implements TCGStock {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof TCGStock))
+        //step1:alias check
+        if (this == obj) {
+            return true;
+        }
+        //step2:null check
+        if (obj == null) {
             return false;
+        }
+        //step3:interface check
+        if (!(obj instanceof TCGStock)) {
+            return false;
+        }
 
-        TCGStock thisCopy = this.newInstance();
-        TCGStock otherCopy = ((TCGStock) obj).newInstance();
+        TCGStock other = (TCGStock) obj;
 
-        // Clone both sides
-        while (this.totalStock() > 0) {
+        // Step 4: Quick check - different size
+        if (this.totalStock() != other.totalStock()) {
+            return false;
+        }
+        if (this.numberOfUniqueItems() != other.numberOfUniqueItems()) {
+            return false;
+        }
+
+        // Step 5: Deep comparison via item count
+        TCGStock tempThis = this.newInstance();
+        TCGStock tempOther = other.newInstance();
+        boolean isEqual = true;
+
+        while (this.totalStock() > 0 && isEqual) {
             TCGItem item = this.removeAnyItem();
-            thisCopy.addItem(item);
+            int countThis = 1;
+            while (this.isInStock(item)) {
+                this.removeItem(item);
+                countThis++;
+            }
+
+            int countOther = 0;
+            while (other.isInStock(item)) {
+                other.removeItem(item);
+                countOther++;
+            }
+
+            if (countThis != countOther) {
+                isEqual = false;
+            }
+
+            for (int i = 0; i < countThis; i++) {
+                tempThis.addItem(item);
+                tempOther.addItem(item);
+            }
         }
 
-        while (((TCGStock) obj).totalStock() > 0) {
-            TCGItem item = ((TCGStock) obj).removeAnyItem();
-            otherCopy.addItem(item);
-        }
+        this.transferFrom(tempThis);
+        other.transferFrom(tempOther);
 
-        // Now compare by count
-        return thisCopy.totalStock() == otherCopy.totalStock() && thisCopy
-                .numberOfUniqueItems() == otherCopy.numberOfUniqueItems();
+        return isEqual;
     }
 
     @Override
