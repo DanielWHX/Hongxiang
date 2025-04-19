@@ -35,4 +35,65 @@ public abstract class TCGStockSecondary implements TCGStock {
             this.removeItem(item);
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof TCGStock))
+            return false;
+
+        TCGStock thisCopy = this.newInstance();
+        TCGStock otherCopy = ((TCGStock) obj).newInstance();
+
+        // Clone both sides
+        while (this.totalStock() > 0) {
+            TCGItem item = this.removeAnyItem();
+            thisCopy.addItem(item);
+        }
+
+        while (((TCGStock) obj).totalStock() > 0) {
+            TCGItem item = ((TCGStock) obj).removeAnyItem();
+            otherCopy.addItem(item);
+        }
+
+        // Now compare by count
+        return thisCopy.totalStock() == otherCopy.totalStock() && thisCopy
+                .numberOfUniqueItems() == otherCopy.numberOfUniqueItems();
+    }
+
+    @Override
+    public String toString() {
+        TCGStock temp = this.newInstance();
+        StringBuilder sb = new StringBuilder();
+        sb.append("TCGStock: [");
+        boolean first = true;
+
+        while (this.totalStock() > 0) {
+            TCGItem item = this.removeAnyItem();
+            if (!first)
+                sb.append(", ");
+            sb.append(item.name());
+            first = false;
+            temp.addItem(item);
+        }
+
+        this.transferFrom(temp); // restore
+        sb.append("]");
+        return sb.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 17;
+        TCGStock temp = this.newInstance();
+
+        while (this.totalStock() > 0) {
+            TCGItem item = this.removeAnyItem();
+            hash = 31 * hash + item.hashCode();
+            temp.addItem(item);
+        }
+
+        this.transferFrom(temp);
+        return hash;
+    }
+
 }
